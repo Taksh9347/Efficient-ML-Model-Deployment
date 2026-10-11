@@ -4,6 +4,7 @@ Handles startup (loading model weights into RAM once) and graceful shutdown logi
 """
 
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 
 

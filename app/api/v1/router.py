@@ -4,6 +4,7 @@ Aggregates health, prediction, and metadata routes.
 """
 
 from fastapi import APIRouter
+
 from app.api.v1.health import health_router
 from app.api.v1.predict import predict_router
 

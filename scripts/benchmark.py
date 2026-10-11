@@ -3,9 +3,11 @@ Latency & Throughput Benchmark Script.
 Simulates concurrent client requests to evaluate p50, p95, p99 latency percentiles and RPS.
 """
 
-import time
 import statistics
+import time
+
 import httpx
+import requests
 
 
 def benchmark_api(
@@ -35,7 +37,7 @@ def benchmark_api(
                 elapsed_ms = (time.perf_counter() - start) * 1000
                 if response.status_code == 200:
                     latencies.append(elapsed_ms)
-            except Exception as e:
+            except requests.RequestException as e:
                 print(f"Request failed: {e}")
 
     if latencies:

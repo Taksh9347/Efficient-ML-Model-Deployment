@@ -3,8 +3,8 @@ Pydantic Request and Response Schemas.
 Enforces strict type validation and boundary checks for the Breast Cancer dataset.
 """
 
+
 from pydantic import BaseModel, Field
-from typing import List
 
 
 class CancerFeatures(BaseModel):
@@ -34,10 +34,10 @@ class PredictionResponse(BaseModel):
 
 class BatchPredictionRequest(BaseModel):
     """Batch prediction request payload."""
-    inputs: List[CancerFeatures] = Field(..., min_length=1, max_length=500)
+    inputs: list[CancerFeatures] = Field(..., min_length=1, max_length=500)
 
 
 class BatchPredictionResponse(BaseModel):
     """Batch prediction response payload."""
-    predictions: List[PredictionResponse]
+    predictions: list[PredictionResponse]
     total_processed: int

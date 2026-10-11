@@ -5,10 +5,11 @@ and exports both Joblib (.joblib) and ONNX (.onnx) serialized artifacts to model
 """
 
 import os
-from sklearn.datasets import load_breast_cancer
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
+
 import joblib
+from sklearn.datasets import load_breast_cancer
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
 
 def train_and_export():

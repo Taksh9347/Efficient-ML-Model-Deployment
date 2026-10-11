@@ -4,7 +4,6 @@ Fails CI build if inference latency regresses beyond performance SLAs (e.g., > 2
 """
 
 import time
-import pytest
 
 
 def test_inference_latency_sla():

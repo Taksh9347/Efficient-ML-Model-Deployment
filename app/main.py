@@ -5,9 +5,10 @@ and attaches observability telemetry.
 """
 
 from fastapi import FastAPI
+
+from app.api.v1.router import api_v1_router
 from app.config import settings
 from app.lifespan import lifespan
-from app.api.v1.router import api_v1_router
 
 
 def create_application() -> FastAPI:

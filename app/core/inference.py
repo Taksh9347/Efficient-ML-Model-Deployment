@@ -4,8 +4,7 @@ Provides unified abstraction for loading and executing inference using
 either ONNX Runtime (primary) or Scikit-Learn Joblib (fallback).
 """
 
-from typing import Tuple, List, Any
-import numpy as np
+from typing import Any
 
 
 class ModelManager:
@@ -23,24 +22,21 @@ class ModelManager:
         Initializes onnxruntime.InferenceSession or joblib.load.
         """
         # TODO: Implement model loader for ONNX or Joblib
-        pass
 
     def unload_model(self) -> None:
         """Frees model resources upon shutdown."""
         self.session = None
 
-    def predict(self, features: Any) -> Tuple[int, float]:
+    def predict(self, features: Any) -> tuple[int, float]:
         """
         Executes single prediction.
         Returns:
             Tuple of (prediction_class, probability_score)
         """
         # TODO: Implement zero-copy tensor conversion and prediction
-        pass
 
-    def predict_batch(self, features_list: List[Any]) -> List[Tuple[int, float]]:
+    def predict_batch(self, features_list: list[Any]) -> list[tuple[int, float]]:
         """
         Executes vectorized batch prediction for high-throughput workloads.
         """
         # TODO: Implement batch vector inference
-        pass

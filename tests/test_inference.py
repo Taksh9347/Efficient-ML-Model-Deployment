@@ -3,7 +3,6 @@ Unit Tests for Inference Engine and Model Outputs.
 Validates output tensor shapes, probability bounds [0.0, 1.0], and class labels.
 """
 
-import pytest
 
 
 def test_model_manager_interface():
@@ -20,4 +19,3 @@ def test_model_manager_interface():
 def test_dummy_prediction_contract():
     """Verifies that predicted classes are binary (0 or 1) and probabilities are between 0 and 1."""
     # TODO: Add assertions once train.py has generated the model artifact
-    pass

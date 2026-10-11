@@ -5,11 +5,12 @@ Uses anyio threadpool offloading to avoid blocking the asyncio event loop.
 """
 
 from fastapi import APIRouter, Request, status
+
 from app.core.schemas import (
-    PredictionRequest,
-    PredictionResponse,
     BatchPredictionRequest,
     BatchPredictionResponse,
+    PredictionRequest,
+    PredictionResponse,
 )
 
 predict_router = APIRouter()
@@ -29,7 +30,6 @@ async def predict_single(payload: PredictionRequest, request: Request):
     # TODO: Call model manager asynchronously via anyio.to_thread.run_sync
     # model_manager = request.app.state.model_manager
     # prediction, probability = await anyio.to_thread.run_sync(model_manager.predict, payload.features)
-    pass
 
 
 @predict_router.post(
@@ -43,4 +43,3 @@ async def predict_batch(payload: BatchPredictionRequest, request: Request):
     Accepts a list of feature sets and returns a list of classification predictions.
     """
     # TODO: Call batch prediction asynchronously via anyio.to_thread.run_sync
-    pass
