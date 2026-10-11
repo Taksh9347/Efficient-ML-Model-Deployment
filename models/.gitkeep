@@ -1,0 +1,3 @@
+# This file preserves the models/ directory in Git.
+# Large model binaries (*.joblib, *.onnx) are ignored in .gitignore to avoid bloating repo history.
+# Run 'python scripts/train.py' to generate model artifacts locally.

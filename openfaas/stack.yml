@@ -1,0 +1,20 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  ml-cancer-deployment:
+    lang: dockerfile
+    handler: .
+    image: ghcr.io/your-org/ml-cancer-deployment:v1.0.0
+    environment:
+      mode: "http"
+      upstream_url: "http://127.0.0.1:8000"
+      exec_timeout: "10s"
+      write_timeout: "10s"
+      read_timeout: "10s"
+    annotations:
+      com.openfaas.scale.zero: "true"
+      com.openfaas.scale.min: "0"
+      com.openfaas.scale.max: "10"

@@ -1,0 +1,25 @@
+# OpenFaaS Serverless Dockerfile using of-watchdog
+FROM ghcr.io/openfaas/of-watchdog:0.9.15 AS watchdog
+
+FROM python:3.11-slim
+
+COPY --from=watchdog /fprocess /usr/bin/fprocess
+RUN chmod +x /usr/bin/fprocess
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app /app/app
+COPY models /app/models
+
+ENV mode="http"
+ENV upstream_url="http://127.0.0.1:8000"
+ENV fprocess="uvicorn app.main:app --host 127.0.0.1 --port 8000"
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=5s CMD [ -e /tmp/.lock ] || exit 1
+
+CMD ["fprocess"]

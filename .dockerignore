@@ -1,0 +1,15 @@
+.git
+.github
+.gitignore
+.dockerignore
+tests
+*.pyc
+__pycache__
+.pytest_cache
+.venv
+venv
+env
+*.md
+openfaas
+docker-compose.yml
+requirements-dev.txt
