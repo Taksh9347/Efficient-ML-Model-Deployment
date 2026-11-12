@@ -4,12 +4,14 @@ Initializes the application instance, registers middleware, includes routers,
 and attaches observability telemetry.
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
+from app.api.v1.predict import predict_single
 from app.api.v1.router import api_v1_router
 from app.config import settings
+from app.core.schemas import PredictionRequest, PredictionResponse
 from app.core.telemetry import setup_telemetry
 from app.lifespan import lifespan
 
@@ -21,7 +23,7 @@ def create_application() -> FastAPI:
         version=settings.APP_VERSION,
         lifespan=lifespan,
         docs_url="/docs",
-        redoc_url="/redoc"
+        redoc_url="/redoc",
     )
 
     # Enable CORS for cross-origin frontend requests
@@ -33,10 +35,25 @@ def create_application() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # Redirect root to interactive Swagger UI documentation
+    # Redirect root GET to interactive Swagger UI documentation
     @app.get("/", include_in_schema=False)
     async def root_redirect():
         return RedirectResponse(url="/docs")
+
+    # OpenFaaS Root POST invocation alias for direct serverless function calls
+    @app.post("/", response_model=PredictionResponse, include_in_schema=False)
+    async def root_predict(payload: PredictionRequest, request: Request):
+        return await predict_single(payload, request)
+
+    # OpenFaaS & Kubernetes standard health & readiness probes
+    @app.get("/_/health", include_in_schema=False)
+    @app.get("/healthz", include_in_schema=False)
+    async def openfaas_liveness():
+        return {"status": "OK"}
+
+    @app.get("/_/ready", include_in_schema=False)
+    async def openfaas_readiness():
+        return {"status": "OK"}
 
     # Mount version 1 API endpoints
     app.include_router(api_v1_router, prefix="/api/v1")

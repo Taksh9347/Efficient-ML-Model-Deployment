@@ -8,12 +8,6 @@ functions:
     lang: dockerfile
     handler: .
     image: ghcr.io/taksh9347/efficient-ml-model-deployment:preetham
-    environment:
-      mode: "http"
-      upstream_url: "http://127.0.0.1:8000"
-      exec_timeout: "10s"
-      write_timeout: "10s"
-      read_timeout: "10s"
     annotations:
       com.openfaas.scale.zero: "true"
       com.openfaas.scale.min: "0"
