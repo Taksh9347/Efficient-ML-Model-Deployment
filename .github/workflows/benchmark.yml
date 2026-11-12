@@ -1,6 +1,12 @@
 name: Latency Benchmark & Regression Test
 
 on:
+  push:
+    branches: [main, master, preetham]
+    paths:
+      - "app/**"
+      - "models/**"
+      - "scripts/**"
   pull_request:
     paths:
       - "app/**"

@@ -23,5 +23,7 @@ async def liveness_probe():
 @health_router.get("/ready", response_model=HealthResponse, status_code=status.HTTP_200_OK)
 async def readiness_probe(request: Request):
     """Readiness probe checking if model weights are pre-warmed in RAM."""
-    # TODO: Verify request.app.state.model_manager is loaded
+    model_manager = getattr(request.app.state, "model_manager", None)
+    if model_manager is None or model_manager.session is None:
+        return HealthResponse(status="not_ready")
     return HealthResponse(status="ready")

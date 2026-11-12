@@ -7,6 +7,9 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.config import settings
+from app.core.inference import ModelManager
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,8 +18,9 @@ async def lifespan(app: FastAPI):
     - Startup: Initialize and pre-warm model manager.
     - Shutdown: Clean up resources and close connections.
     """
-    # TODO: Initialize ModelManager and attach to app.state.model_manager
-    # app.state.model_manager = ModelManager(settings.MODEL_PATH)
-    # app.state.model_manager.load_model()
+    model_manager = ModelManager(settings.MODEL_PATH)
+    model_manager.load_model()
+    app.state.model_manager = model_manager
     yield
-    # TODO: Clean up model resources on shutdown if necessary
+    if hasattr(app.state, "model_manager") and app.state.model_manager is not None:
+        app.state.model_manager.unload_model()
