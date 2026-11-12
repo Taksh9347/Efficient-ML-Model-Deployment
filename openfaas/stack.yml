@@ -7,7 +7,7 @@ functions:
   ml-cancer-deployment:
     lang: dockerfile
     handler: .
-    image: ghcr.io/your-org/ml-cancer-deployment:v1.0.0
+    image: ghcr.io/taksh9347/efficient-ml-model-deployment:preetham
     environment:
       mode: "http"
       upstream_url: "http://127.0.0.1:8000"
