@@ -4,8 +4,8 @@
 > **Target Problem:** Wisconsin Breast Cancer Biometric Classification  
 > **Branch:** `preetham`  
 > **Deployment Target:** AWS EC2 Cloud with K3s & OpenFaaS  
-> **Public Gateway Endpoint:** `http://18.61.126.191:8080/function/ml-cancer-deployment`  
-> **UI Dashboard:** `http://18.61.126.191:8080/ui/`  
+> **Public Gateway Endpoint:** `http://98.130.59.139:8080/function/ml-cancer-deployment`  
+> **UI Dashboard:** `http://98.130.59.139:8080/ui/`  
 
 ---
 
@@ -238,3 +238,4 @@ Because the system runs inside an AWS EC2 instance orchestrated by Kubernetes, t
 
 ### 4. Zero Vendor Lock-in
 The entire infrastructure is built on open-source standards: **FastAPI**, **Docker**, **Kubernetes (K3s)**, and **OpenFaaS**. If you ever decide to leave AWS, the exact same stack can be migrated to Google Cloud (GCP), Microsoft Azure, or an on-premise hospital server in less than 5 minutes.
+
