@@ -4,8 +4,8 @@
 > **Target Problem:** Wisconsin Breast Cancer Biometric Classification  
 > **Branch:** `preetham`  
 > **Deployment Target:** AWS EC2 Cloud with K3s & OpenFaaS  
-> **Public Gateway Endpoint:** `http://98.130.59.139:8080/function/ml-cancer-deployment`  
-> **UI Dashboard:** `http://98.130.59.139:8080/ui/`  
+> **Public Gateway Endpoint:** `http://40.192.69.187:8080/function/ml-cancer-deployment`  
+> **UI Dashboard:** `http://40.192.69.187:8080/ui/`  
 
 ---
 

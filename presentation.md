@@ -3,8 +3,8 @@
 > **Project Title:** End-to-End Serverless Machine Learning Microservice with ONNX Optimization, Kubernetes (K3s), and OpenFaaS Auto-scaling  
 > **Course / Presentation Target:** Academic Project Review & Demonstration  
 > **Branch:** `preetham`  
-> **Live Production Gateway:** `http://98.130.59.139:8080/function/ml-cancer-deployment`  
-> **Live OpenFaaS UI:** `http://98.130.59.139:8080/ui/`  
+> **Live Production Gateway:** `http://40.192.69.187:8080/function/ml-cancer-deployment`  
+> **Live OpenFaaS UI:** `http://40.192.69.187:8080/ui/`  
 > **Documentation File:** [presentation.md](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/presentation.md)
 
 ---
@@ -62,7 +62,7 @@ flowchart TD
         OFGateway["OpenFaaS Gateway\n(Port 8080)"]
         OFOperator["faas-netes Controller\n(Auto-scale: 0 to 10 Replicas)"]
         LivePod["ml-cancer-deployment Pod\n(Ready: 1/1, Latency: 198ms)"]
-        BrowserUI["Doctor / Evaluator Browser\n(http://98.130.59.139:8080/ui/)"]
+        BrowserUI["Doctor / Evaluator Browser\n(http://40.192.69.187:8080/ui/)"]
 
         AWSEC2 --> K3s --> OFGateway --> OFOperator --> LivePod
         BrowserUI -->|Live HTTP Request| OFGateway
@@ -259,7 +259,7 @@ stateDiagram-v2
 
 ### 3. LIVE DEMO WALKTHROUGH (Script for Evaluators)
 
-*Open `http://98.130.59.139:8080/ui/` on the projector screen.*
+*Open `http://40.192.69.187:8080/ui/` on the projector screen.*
 
 ```text
 "Professor, we are now looking at our live production OpenFaaS Gateway deployed on an AWS EC2 instance.
@@ -332,8 +332,8 @@ Notice on the left panel: our microservice 'ml-cancer-deployment' is currently a
 
 #### Demo Test 3: Monitoring & Scale-to-Zero Verification
 1. Point to the **Invocations Counter** in the UI: *"Notice the invocation count incremented immediately with each click."*
-2. Open Swagger Documentation: `http://98.130.59.139:8080/function/ml-cancer-deployment/docs`
-3. Open Prometheus Telemetry: `http://98.130.59.139:8080/function/ml-cancer-deployment/metrics`
+2. Open Swagger Documentation: `http://40.192.69.187:8080/function/ml-cancer-deployment/docs`
+3. Open Prometheus Telemetry: `http://40.192.69.187:8080/function/ml-cancer-deployment/metrics`
 4. Explain Scale-to-Zero: *"If no requests enter this gateway for 5 minutes, OpenFaaS automatically terminates the pod down to 0 replicas. The server consumes $0 compute cost while remaining ready to warm up in under 1 second upon the next clinical request."*
 
 ---
