@@ -3,8 +3,8 @@
 > **Project Title:** End-to-End Serverless Machine Learning Microservice with ONNX Optimization, Kubernetes (K3s), and OpenFaaS Auto-scaling  
 > **Course / Presentation Target:** Academic Project Review & Demonstration  
 > **Branch:** `preetham`  
-> **Live Production Gateway:** `http://40.192.69.187:8080/function/ml-cancer-deployment`  
-> **Live OpenFaaS UI:** `http://40.192.69.187:8080/ui/`  
+> **Live Production Gateway:** `http://16.112.221.109:8080/function/ml-cancer-deployment`  
+> **Live OpenFaaS UI:** `http://16.112.221.109:8080/ui/`  
 > **Documentation File:** [presentation.md](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/presentation.md)
 
 ---
@@ -13,10 +13,10 @@
 
 | Presenter | Role Title | Core Engineering Ownership | Key Code & Config Artifacts |
 | :--- | :--- | :--- | :--- |
-| **Person 1** | **Machine Learning & Model Optimization Engineer** | Problem Formulation, RandomForest training, ONNX C++ graph serialization, dual-backend inference engine, latency optimization | [`scripts/train.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/scripts/train.py)<br>[`models/cancer_model.onnx`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/models/cancer_model.onnx)<br>[`app/core/inference.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/core/inference.py) |
-| **Person 2** | **Backend API Architect & Reliability Engineer** | FastAPI async application design, Pydantic v2 strict feature validation, non-blocking threadpool offloading, Pytest test suite, Prometheus telemetry | [`app/main.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/main.py)<br>[`app/core/schemas.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/core/schemas.py)<br>[`app/api/v1/predict.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/api/v1/predict.py)<br>[`tests/test_api.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/tests/test_api.py) |
-| **Person 3** | **DevOps & Cloud Infrastructure Engineer** | Multi-stage Docker containerization, security hardening (non-root `appuser`), GitHub Actions automated CI/CD pipeline, AWS EC2 provisioning & Linux swap tuning | [`Dockerfile`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/Dockerfile)<br>[`docker-compose.yml`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/docker-compose.yml)<br>[`.github/workflows/ci-cd.yml`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/.github/workflows/ci-cd.yml) |
-| **Person 4** | **Cloud Native Serverless Architect & Lead Demonstrator** | Lightweight Kubernetes (K3s) setup, OpenFaaS serverless framework, port 8080 probe troubleshooting, auto-scaling & scale-to-zero, Live System Demo | [`openfaas/stack.yml`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/openfaas/stack.yml)<br>[`DEPLOYMENT_AND_ARCHITECTURE_GUIDE.md`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/DEPLOYMENT_AND_ARCHITECTURE_GUIDE.md) |
+ | **Machine Learning & Model Optimization Engineer** | Problem Formulation, RandomForest training, ONNX C++ graph serialization, dual-backend inference engine, latency optimization | [`scripts/train.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/scripts/train.py)<br>[`models/cancer_model.onnx`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/models/cancer_model.onnx)<br>[`app/core/inference.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/core/inference.py) |
+|  | **Backend API Architect & Reliability Engineer** | FastAPI async application design, Pydantic v2 strict feature validation, non-blocking threadpool offloading, Pytest test suite, Prometheus telemetry | [`app/main.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/main.py)<br>[`app/core/schemas.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/core/schemas.py)<br>[`app/api/v1/predict.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/app/api/v1/predict.py)<br>[`tests/test_api.py`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/tests/test_api.py) |
+ | **DevOps & Cloud Infrastructure Engineer** | Multi-stage Docker containerization, security hardening (non-root `appuser`), GitHub Actions automated CI/CD pipeline, AWS EC2 provisioning & Linux swap tuning | [`Dockerfile`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/Dockerfile)<br>[`docker-compose.yml`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/docker-compose.yml)<br>[`.github/workflows/ci-cd.yml`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/.github/workflows/ci-cd.yml) |
+ | **Cloud Native Serverless Architect & Lead Demonstrator** | Lightweight Kubernetes (K3s) setup, OpenFaaS serverless framework, port 8080 probe troubleshooting, auto-scaling & scale-to-zero, Live System Demo | [`openfaas/stack.yml`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/openfaas/stack.yml)<br>[`DEPLOYMENT_AND_ARCHITECTURE_GUIDE.md`](file:///c:/Users/chegu/OneDrive/Desktop/CC_FOLDER/Efficient-ML-Model-Deployment/DEPLOYMENT_AND_ARCHITECTURE_GUIDE.md) |
 
 ---
 
@@ -62,7 +62,7 @@ flowchart TD
         OFGateway["OpenFaaS Gateway\n(Port 8080)"]
         OFOperator["faas-netes Controller\n(Auto-scale: 0 to 10 Replicas)"]
         LivePod["ml-cancer-deployment Pod\n(Ready: 1/1, Latency: 198ms)"]
-        BrowserUI["Doctor / Evaluator Browser\n(http://40.192.69.187:8080/ui/)"]
+        BrowserUI["Doctor / Evaluator Browser\n(http://16.112.221.109:8080/ui/)"]
 
         AWSEC2 --> K3s --> OFGateway --> OFOperator --> LivePod
         BrowserUI -->|Live HTTP Request| OFGateway
@@ -75,7 +75,7 @@ flowchart TD
 
 ---
 
-## 👤 Person 1: Machine Learning & Model Optimization Engine
+## : Machine Learning & Model Optimization Engine
 **Speaking Time:** ~3 to 4 Minutes  
 **Slide/Topic Title:** Problem Definition, Wisconsin Dataset, and ONNX Runtime Acceleration
 
@@ -122,7 +122,7 @@ flowchart LR
 
 ---
 
-## 👤 Person 2: Backend API Architecture, Validation & Reliability
+: Backend API Architecture, Validation & Reliability
 **Speaking Time:** ~3 to 4 Minutes  
 **Slide/Topic Title:** High-Throughput FastAPI Design, Pydantic v2 Schemas & Quality Assurance
 
@@ -160,7 +160,7 @@ flowchart LR
 
 ---
 
-## 👤 Person 3: Containerization, CI/CD Pipeline & Cloud Provisioning
+: Containerization, CI/CD Pipeline & Cloud Provisioning
 **Speaking Time:** ~3 to 4 Minutes  
 **Slide/Topic Title:** Multi-Stage Docker, Automated CI/CD, and AWS EC2 Setup
 
@@ -213,7 +213,7 @@ flowchart TD
 
 ---
 
-## 👤 Person 4: Cloud Native Serverless Architecture, Troubleshooting & Live Demo
+ Cloud Native Serverless Architecture, Troubleshooting & Live Demo
 **Speaking Time:** ~4 to 5 Minutes  
 **Slide/Topic Title:** Kubernetes (K3s), OpenFaaS Serverless Autoscaling & Live System Demonstration
 
@@ -259,7 +259,7 @@ stateDiagram-v2
 
 ### 3. LIVE DEMO WALKTHROUGH (Script for Evaluators)
 
-*Open `http://40.192.69.187:8080/ui/` on the projector screen.*
+*Open `http://16.112.221.109:8080/ui/` on the projector screen.*
 
 ```text
 "Professor, we are now looking at our live production OpenFaaS Gateway deployed on an AWS EC2 instance.
